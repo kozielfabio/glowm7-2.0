@@ -100,7 +100,7 @@ main,footer,.hero{position:relative;z-index:1}
 .halo{position:absolute;left:50%;top:40%;width:min(900px,110vw);height:520px;transform:translate(-50%,-50%);z-index:-1;background:radial-gradient(closest-side,rgba(47,107,255,.22),rgba(15,45,110,.06) 60%,transparent);pointer-events:none}
 .pill{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 7px;border-radius:999px;border:1px solid var(--line-2);background:rgba(47,107,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--ice)}
 .pill b{padding:4px 10px;border-radius:999px;background:var(--blue);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;box-shadow:0 0 14px rgba(47,107,255,.8)}
-.word{display:flex;justify-content:center;align-items:flex-start;gap:.2em;margin:30px 0 26px;font-size:clamp(4.6rem,13.5vw,13rem);font-weight:800;line-height:.82;letter-spacing:-.065em;user-select:none;-webkit-user-select:none}
+.word{display:flex;justify-content:center;align-items:flex-start;gap:.2em;margin:30px 0 26px;font-size:clamp(4.4rem,12vw,12rem);font-weight:800;line-height:.82;letter-spacing:-.065em;user-select:none;-webkit-user-select:none}
 .grp{display:inline-flex;position:relative}
 .l{display:inline-block;cursor:default;transition:transform .5s var(--ease),filter .4s}
 .g .l{background:linear-gradient(180deg,#fff 35%,#A9BFEF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -108,7 +108,20 @@ main,footer,.hero{position:relative;z-index:1}
 .l:hover{transform:translateY(-.07em)}
 .l.pop{animation:pop .6s var(--ease)}
 @keyframes pop{30%{transform:translateY(-.14em) scale(1.06)}}
-.word sup{position:relative;align-self:flex-start;margin:.06em 0 0 .1em;font-size:.15em;letter-spacing:0;font-weight:800;color:#fff;padding:.3em .55em;line-height:1;border:1px solid var(--line-2);border-radius:999px;background:rgba(47,107,255,.2);backdrop-filter:blur(6px)}
+.ver{position:relative;align-self:flex-start;display:flex;flex-direction:column;align-items:flex-start;margin:.04em 0 0 .1em;cursor:pointer}
+.ver small{font-size:.085em;line-height:1;letter-spacing:.32em;font-weight:800;text-transform:uppercase;color:var(--blue-3);margin:0 0 .35em .2em;padding:.45em .7em;border:1px solid var(--line-2);border-radius:999px;background:rgba(47,107,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ver b{position:relative;display:block;font-size:.64em;line-height:.85;font-weight:800;letter-spacing:-.05em;background:linear-gradient(180deg,#fff 15%,#B9CEFF 55%,#4F83FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(79,131,255,.85)) drop-shadow(0 0 50px rgba(47,107,255,.5))}
+.ver b.old{background:none;color:rgba(200,215,255,.22);filter:none}
+.ver b.glitch{animation:glitch .5s steps(2) infinite}
+.ver b.up{animation:verup 1s var(--ease)}
+.ver::after{content:"";position:absolute;left:50%;top:60%;width:2.2em;height:2.2em;margin:-1.1em 0 0 -1.1em;font-size:.5em;border-radius:50%;background:radial-gradient(circle,rgba(160,195,255,.9),rgba(47,107,255,.4) 40%,transparent 70%);opacity:0;transform:scale(.2);pointer-events:none}
+.ver.flash::after{animation:vflash .9s var(--ease)}
+@keyframes glitch{0%{transform:translate(0)}25%{transform:translate(-.03em,.01em)}50%{transform:translate(.03em,-.01em)}75%{transform:translate(-.01em,-.02em)}}
+@keyframes verup{0%{transform:scale(.55) translateY(.15em);opacity:0}55%{transform:scale(1.14);opacity:1}100%{transform:none}}
+@keyframes vflash{0%{opacity:0;transform:scale(.2)}30%{opacity:1}100%{opacity:0;transform:scale(1.6)}}
+.nchip{margin-left:12px;padding:5px 10px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.12em;color:#fff;background:var(--blue);box-shadow:0 0 16px rgba(47,107,255,.7)}
+.brandwrap{display:flex;align-items:center}
+.track span em{font-style:normal;color:var(--blue-2);text-shadow:0 0 18px rgba(79,131,255,.8)}
 .hero h1{font-size:clamp(1.85rem,3.8vw,3.5rem);font-weight:800;letter-spacing:-.045em;line-height:1.08;max-width:20ch;margin-inline:auto}
 .rot{display:inline-grid;vertical-align:bottom;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em;color:var(--blue-2);text-shadow:0 0 30px rgba(79,131,255,.5)}
 .rot span{grid-area:1/1}
@@ -130,7 +143,8 @@ main,footer,.hero{position:relative;z-index:1}
 @media (prefers-reduced-motion:no-preference){
   .hero .pill{animation:up .9s .2s var(--ease) both}
   .l{animation:lin 1.1s var(--ease) backwards;animation-delay:calc(.45s + var(--i)*.07s)}
-  .word sup{animation:up .8s 1.1s var(--ease) both}
+  .ver small{animation:up .8s 1.1s var(--ease) both}
+  .ver b{animation:up .8s 1.2s var(--ease) both}
   .hero h1,.hero .lede,.hero .acts,.facts,.cue{animation:up .9s var(--ease) both}
   .hero h1{animation-delay:1s}.hero .lede{animation-delay:1.12s}.hero .acts{animation-delay:1.24s}.facts{animation-delay:1.36s}.cue{animation-delay:1.8s}
   .m .l{animation:lin 1.1s var(--ease) backwards,flick 3.2s 2s ease-in-out infinite;animation-delay:calc(.45s + var(--i)*.07s),2s}
@@ -354,7 +368,8 @@ footer a:hover{color:var(--fg)}
   .nav .wrap{height:64px}
   .hero{padding:104px 0 96px;align-items:flex-start}
   .word{flex-direction:column;align-items:center;gap:0;font-size:28vw;line-height:.8;margin:26px 0 22px}
-  .word sup{font-size:.13em;margin-top:.15em}
+  .ver{margin-top:.02em}
+  .ver small{font-size:.075em}
   .hero h1{font-size:clamp(1.75rem,8vw,2.2rem)}
   .hero .lede{font-size:1rem;margin:16px auto 28px}
   .facts{display:grid;grid-template-columns:repeat(3,1fr);width:100%;margin-top:28px}
@@ -401,7 +416,7 @@ footer a:hover{color:var(--fg)}
 
 <nav class="nav" id="nav" aria-label="Principal">
   <div class="wrap">
-    <a href="#" class="brand">ZARIEL</a>
+    <div class="brandwrap"><a href="#" class="brand">ZARIEL</a><span class="nchip">GLOW M7 2.0</span></div>
     <ul class="links">
       <li><a href="#metodo">Método</a></li>
       <li><a href="#resultados">Resultados</a></li>
@@ -427,10 +442,10 @@ footer a:hover{color:var(--fg)}
 <header class="hero" id="hero">
   <div class="halo" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="pill"><b>NOVO</b>A versão 2.0 do método chegou</span>
+    <span class="pill"><b>2.0</b>Chegou a nova versão do método</span>
     <div class="word" id="word" aria-label="GLOW M7 2.0" role="img">
       <span class="grp g"><span class="l" style="--i:0">G</span><span class="l" style="--i:1">L</span><span class="l" style="--i:2">O</span><span class="l" style="--i:3">W</span></span>
-      <span class="grp m"><span class="l" style="--i:5">M</span><span class="l" style="--i:6">7</span><sup>2.0</sup></span>
+      <span class="grp m"><span class="l" style="--i:5">M</span><span class="l" style="--i:6">7</span><span class="ver" id="ver" aria-hidden="true"><small>Versão</small><b id="vnum">2.0</b></span></span>
     </div>
     <h1>O método pra construir a sua melhor <span class="rot" id="rot"><span>versão.</span></span></h1>
     <p class="lede">Pele, rosto, cabelo, estrutura e presença num sistema só. Sem achismo, sem enrolação.</p>
@@ -705,8 +720,16 @@ if(!calm)setInterval(()=>{if(document.hidden)return;wi=(wi+1)%W.length;const old
 const count=(el,dur=1200)=>{const n=+el.dataset.n;if(calm){el.textContent=n;return}const t0=performance.now();const f=now=>{const p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)};
 setTimeout(()=>$$(".facts [data-n]").forEach(el=>count(el)),calm?0:1400);
 
+/* upgrade 1.0 -> 2.0 */
+const vn=$("#vnum"),ver=$("#ver");
+const upgrade=(d1,d2)=>{vn.classList.remove("up");vn.textContent="1.0";vn.classList.add("old");ver.classList.remove("flash");
+  setTimeout(()=>vn.classList.add("glitch"),d1);
+  setTimeout(()=>{vn.textContent="2.0";vn.classList.remove("old","glitch");void vn.offsetWidth;vn.classList.add("up");void ver.offsetWidth;ver.classList.add("flash");
+    const r=vn.getBoundingClientRect();Fire.ignite((r.left+r.width/2)/innerWidth,1-r.bottom/innerHeight,1.3);Fire.flare(.15);buzz([10,30,14])},d2)};
+if(!calm){upgrade(1500,2100);ver.addEventListener("pointerdown",()=>upgrade(150,650))}
+
 /* ========= FAIXA COM VELOCIDADE ========= */
-const words=["Pele","Rosto","Altura","Estrutura óssea","Cabelo","Mentalidade","GLOW M7 2.0"];
+const words=["<em>Versão 2.0</em>","Pele","Rosto","Altura","<em>GLOW M7 2.0</em>","Estrutura óssea","Cabelo","Mentalidade"];
 const tr=$("#track");const chunk=`<span>${words.map(w=>`${w}<b>✦</b>`).join("")}</span>`;tr.innerHTML=chunk.repeat(4);
 let tx=0,v=0,lastY=scrollY;
 if(!calm){const tick=()=>{const dy=scrollY-lastY;lastY=scrollY;v+=(dy*.6-v)*.1;const half=tr.scrollWidth/2;tx-=(.6+Math.abs(v))*(v<-.5?-1:1);if(tx<=-half)tx+=half;if(tx>0)tx-=half;tr.style.transform=`translate3d(${tx}px,0,0)`;requestAnimationFrame(tick)};requestAnimationFrame(tick)}
